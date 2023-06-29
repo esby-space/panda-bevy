@@ -6,6 +6,7 @@ repository="https://github.com/esby-space/panda-bevy"
 readme="README.md"
 keywords = ["pixels", "2D", "ecs", "bevy"]
 categories = ["graphics", "rendering"]
+license="MIT"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
