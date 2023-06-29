@@ -15,6 +15,7 @@ use winit_input_helper::WinitInputHelper;
 
 pub use std::time::Duration;
 pub use winit::event::VirtualKeyCode as Key;
+pub use glam;
 
 pub mod geometry;
 pub mod render;

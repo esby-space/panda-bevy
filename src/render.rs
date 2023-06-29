@@ -2,7 +2,7 @@ use bevy_ecs::system::Resource;
 use pixels::{wgpu::Color as WGPUColor, Pixels};
 
 use crate::{
-    geometry::Vector,
+    geometry::Vec2,
     line::Bresenham,
 };
 
@@ -50,7 +50,7 @@ impl Canvas {
         self.draw_pixel(x, y, pixel);
     }
 
-    pub fn draw_line(&mut self, start: &Vector, end: &Vector, pixel: [u8; 4]) {
+    pub fn draw_line(&mut self, start: &Vec2, end: &Vec2, pixel: [u8; 4]) {
         for point in Bresenham::new(start, end) {
             self.draw_nearest_pixel(point.x, point.y, pixel);
         }

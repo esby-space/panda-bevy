@@ -1,4 +1,4 @@
-use crate::{Canvas, geometry::Vector};
+use crate::{Canvas, geometry::Vec2};
 
 pub struct Sprite {
     pub width: u32,
@@ -22,7 +22,7 @@ impl Sprite {
         }
     }
 
-    pub fn draw(&self, canvas: &mut Canvas, point: &Vector) {
+    pub fn draw(&self, canvas: &mut Canvas, point: &Vec2) {
         for y in 0..self.height {
             for x in 0..self.width {
                 let index = 4 * (y * self.width + x) as usize;

@@ -1,17 +1,17 @@
-pub use glam::Vec2 as Vector;
+pub use glam::Vec2;
 
 use crate::Canvas;
 
 pub struct Rectangle {
-    pub point: Vector,
-    pub size: Vector,
+    pub point: Vec2,
+    pub size: Vec2,
 }
 
 impl Rectangle {
     pub fn new(x: f32, y: f32, w: f32, h: f32) -> Self {
         Self {
-            point: Vector::new(x, y),
-            size: Vector::new(w, h),
+            point: Vec2::new(x, y),
+            size: Vec2::new(w, h),
         }
     }
 
@@ -39,14 +39,14 @@ impl Rectangle {
 }
 
 pub struct Circle {
-    pub center: Vector,
+    pub center: Vec2,
     pub radius: f32
 }
 
 impl Circle {
     pub fn new(x: f32, y: f32, radius: f32) -> Self {
         Self {
-            center: Vector::new(x, y),
+            center: Vec2::new(x, y),
             radius
         }
     }

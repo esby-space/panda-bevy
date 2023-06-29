@@ -4,7 +4,7 @@ use bevy_ecs::{
     system::{Query, ResMut},
     world::World,
 };
-use panda_bevy::{geometry::Circle, geometry::Vector, render::Color, Canvas, Panda, PandaOptions};
+use panda_bevy::{geometry::Circle, geometry::Vec2, render::Color, Canvas, Panda, PandaOptions};
 use rand::random;
 
 const WIDTH: u32 = 480;
@@ -35,7 +35,7 @@ struct Boid {
 }
 
 #[derive(Component)]
-struct Velocity(Vector);
+struct Velocity(Vec2);
 
 fn spawn_boids(world: &mut World) {
     for _ in 0..NUM_BOIDS {
@@ -53,7 +53,7 @@ fn spawn_boids(world: &mut World) {
                     random::<u8>(),
                  ),
             },
-            Velocity(Vector::new(0.0, 0.0)),
+            Velocity(Vec2::new(0.0, 0.0)),
         ));
     }
 }
