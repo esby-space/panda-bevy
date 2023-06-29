@@ -1,0 +1,18 @@
+[package]
+name = "panda_bevy"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+bevy_ecs = "0.10.1"
+glam = "0.24.0"
+image = { version = "0.24.6", default-features = false, features = ["png"] }
+pixels = "0.13.0"
+winit = "0.28.6"
+winit_input_helper = "0.14.1"
+
+[dev-dependencies]
+rand = "0.8.5"
+
