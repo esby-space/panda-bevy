@@ -4,7 +4,7 @@ use bevy_ecs::{
     world::World,
 };
 use pixels::{Pixels, SurfaceTexture};
-use std::time::Instant;
+use std::{time::Instant, ops::{Deref, DerefMut}};
 use winit::{
     dpi::LogicalSize,
     event::Event,
@@ -18,13 +18,13 @@ pub use winit::event::VirtualKeyCode as Key;
 pub use glam;
 
 pub mod geometry;
-pub mod render;
+pub mod canvas;
 pub mod sprite;
 pub mod utils;
 
 mod line;
 
-pub use render::Canvas;
+pub use canvas::Canvas;
 
 pub struct PandaOptions<'a> {
     pub title: &'a str,
@@ -125,3 +125,30 @@ impl Panda {
         })
     }
 }
+
+impl Deref for Input {
+    type Target = WinitInputHelper;
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+
+impl DerefMut for Input {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+
+impl Deref for Time {
+    type Target = Duration;
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+
+impl DerefMut for Time {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+

@@ -4,7 +4,7 @@ use bevy_ecs::{
     system::{Res, ResMut, Resource},
     world::World,
 };
-use panda_bevy::{render::Color, Canvas, Input, Key, Panda, PandaOptions};
+use panda_bevy::{canvas::Color, Canvas, Input, Key, Panda, PandaOptions};
 use rand::{seq::SliceRandom, thread_rng};
 
 const CELL_SIZE: i32 = 10;
@@ -194,11 +194,11 @@ fn setup(world: &mut World) {
 struct CenterX(i32);
 
 fn move_x(mut center_x: ResMut<CenterX>, input: Res<Input>) {
-    if input.0.key_pressed(Key::Left) {
+    if input.key_pressed(Key::Left) {
         center_x.0 -= if center_x.0 > 0 { 1 } else { 0 };
     }
 
-    if input.0.key_pressed(Key::Right) {
+    if input.key_pressed(Key::Right) {
         center_x.0 += if center_x.0 < BOARD_WIDTH as i32 {
             1
         } else {

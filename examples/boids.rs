@@ -4,7 +4,7 @@ use bevy_ecs::{
     system::{Query, ResMut},
     world::World,
 };
-use panda_bevy::{geometry::Circle, geometry::Vec2, render::Color, Canvas, Panda, PandaOptions};
+use panda_bevy::{geometry::Circle, geometry::Vec2, canvas::Color, Canvas, Panda, PandaOptions};
 use rand::random;
 
 const WIDTH: u32 = 480;

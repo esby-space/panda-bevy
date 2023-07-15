@@ -1,5 +1,5 @@
 use bevy_ecs::{schedule::Schedule, system::{Resource, ResMut, Res, Local}, world::World};
-use panda_bevy::{Panda, PandaOptions, Canvas, render::Color, Time, Input, Key, utils::default};
+use panda_bevy::{Panda, PandaOptions, Canvas, canvas::Color, Time, Input, Key, utils::default};
 use rand::random;
 
 const GRID_WIDTH: usize = 200;
@@ -79,7 +79,7 @@ fn setup(world: &mut World) {
 #[derive(Default)]
 struct Timer(f64);
 fn step_board(mut board: ResMut<Cells>, mut timer: Local<Timer>, time: Res<Time>) {
-    timer.0 += time.0.as_secs_f64(); 
+    timer.0 += time.as_secs_f64(); 
     if timer.0 > TIME_STEP {
         timer.0 = 0.0;
         board.step();
@@ -87,7 +87,7 @@ fn step_board(mut board: ResMut<Cells>, mut timer: Local<Timer>, time: Res<Time>
 }
 
 fn randomize_board(mut board: ResMut<Cells>, input: Res<Input>) {
-    if input.0.key_pressed(Key::R) {
+    if input.key_pressed(Key::R) {
         board.randomize();
     }
 }

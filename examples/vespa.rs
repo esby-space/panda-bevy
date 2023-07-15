@@ -5,7 +5,7 @@ use bevy_ecs::{
     world::World, query::With,
 };
 use panda_bevy::{
-    geometry::Vec2, render::Color, sprite::Sprite, Canvas, Input, Key, Panda, PandaOptions, Time,
+    geometry::Vec2, canvas::Color, sprite::Sprite, Canvas, Input, Key, Panda, PandaOptions, Time,
 };
 
 const WIDTH: u32 = 160;
@@ -53,14 +53,14 @@ fn setup(world: &mut World) {
 
 fn apply_velocity(mut query: Query<(&mut Position, &Velocity)>, time: Res<Time>) {
     for (mut position, velocity) in &mut query {
-        position.0 += velocity.0 * time.0.as_secs_f32();
+        position.0 += velocity.0 * time.as_secs_f32();
     }
 }
 
 const GRAVITY: Vec2 = Vec2::new(0.0, 150.0);
 fn apply_gravity(mut query: Query<&mut Velocity>, time: Res<Time>) {
     for mut velocity in &mut query {
-        velocity.0 += GRAVITY * time.0.as_secs_f32();
+        velocity.0 += GRAVITY * time.as_secs_f32();
     }
 }
 
@@ -76,7 +76,7 @@ fn ground_collision(mut query: Query<(&mut Position, &mut Velocity, &Drawable)>)
 const JUMP: Vec2 = Vec2::new(0.0, -70.0);
 fn player_control(mut query: Query<&mut Velocity, With<Player>>, input: Res<Input>) {
     for mut velocity in &mut query {
-        if input.0.key_pressed(Key::Space) {
+        if input.key_pressed(Key::Space) {
             velocity.0 = JUMP;
         }
     }

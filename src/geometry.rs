@@ -40,14 +40,14 @@ impl Rectangle {
 
 pub struct Circle {
     pub center: Vec2,
-    pub radius: f32
+    pub radius: f32,
 }
 
 impl Circle {
     pub fn new(x: f32, y: f32, radius: f32) -> Self {
         Self {
             center: Vec2::new(x, y),
-            radius
+            radius,
         }
     }
 
@@ -62,3 +62,17 @@ impl Circle {
     }
 }
 
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn circle_intersects() {
+        let circle_1 = Circle::new(10.0, 20.0, 10.0);
+        let circle_2 = Circle::new(20.0, 10.0, 5.0);
+        let circle_3 = Circle::new(20.0, 20.0, 2.0);
+
+        assert!(circle_1.intersects(&circle_2));
+        assert!(!circle_3.intersects(&circle_2));
+    }
+}
