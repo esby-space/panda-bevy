@@ -208,13 +208,13 @@ fn move_x(mut center_x: ResMut<CenterX>, input: Res<Input>) {
 }
 
 fn turn_piece(mut queue: ResMut<Queue>, input: Res<Input>) {
-    if input.0.key_pressed(Key::Z) {
+    if input.key_pressed(Key::Z) {
         if let Some(tetrimino) = queue.0.first_mut() {
             tetrimino.turn_left();
         }
     }
 
-    if input.0.key_pressed(Key::Up) {
+    if input.key_pressed(Key::Up) {
         if let Some(tetrimino) = queue.0.first_mut() {
             tetrimino.turn_right();
         }
@@ -227,7 +227,7 @@ fn hard_drop(
     mut center_x: ResMut<CenterX>,
     input: Res<Input>,
 ) {
-    if input.0.key_pressed(Key::Space) {
+    if input.key_pressed(Key::Space) {
         let tetrimino = &queue.0[0];
         board.insert(&tetrimino, center_x.0);
         center_x.0 = 3;
